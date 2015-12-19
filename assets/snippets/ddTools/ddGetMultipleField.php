@@ -40,6 +40,7 @@
  * http://www.DivanDesign.biz
  */
 
+
 //Подключаем modx.ddTools
 require_once $modx->config['base_path'].'assets/snippets/ddTools/modx.ddtools.class.php';
 
@@ -48,6 +49,7 @@ if (isset($docField)){
 	$string = ddTools::getTemplateVarOutput(array($docField), $docId);
 	$string = $string[$docField];
 }
+
 
 //Если задано значение поля
 if (isset($string) && strlen($string) > 0){
@@ -203,10 +205,11 @@ if (isset($string) && strlen($string) > 0){
 				}
 			}
 		}
-		
+
 		//Если вывод в массив
 		if ($outputFormat == 'array'){
 			$result = $res;
+			
 		}else{
 			$resTemp = array();
 			
@@ -237,7 +240,12 @@ if (isset($string) && strlen($string) > 0){
 						//И общее количество элементов
 						$resTemp[$key]['total'] = $total;
 						$resTemp[$key]['resultTotal'] = $resultTotal;
-						$resTemp[$key] = $modx->parseChunk($rowTpl, $resTemp[$key], '[+', '+]');
+						if($tplSource == 'file') {
+							require_once(MODX_BASE_PATH . "assets/snippets/DocLister/lib/DLTemplate.class.php");
+							$resTemp[$key] = DLTemplate::getInstance($modx)->parseChunk($rowTpl, $resTemp[$key], true);
+						} else {
+							$resTemp[$key] = $modx->parseChunk($rowTpl, $resTemp[$key], '[+', '+]');
+						}
 					}
 				}else{
 					foreach ($res as $key => $val){
@@ -311,6 +319,7 @@ if (isset($string) && strlen($string) > 0){
 			}
 		}
 	}
+
 	
 	//Если надо, выводим в плэйсхолдер
 	if (isset($resultToPlaceholder)){
@@ -319,4 +328,4 @@ if (isset($string) && strlen($string) > 0){
 		return $result;
 	}
 }
-?>
+return '';
