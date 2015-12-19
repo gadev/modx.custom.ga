@@ -1,1 +1,1 @@
-MODX.evo.custom ++ gadev addons & theme
+MODX.evo.custom + twig + elFinder + gadev addons & theme
