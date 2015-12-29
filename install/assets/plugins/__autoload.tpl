@@ -12,6 +12,7 @@
  * @internal    @properties
  * @internal    @modx_category API
  * @internal    @events OnWebPageInit,OnManagerPageInit,OnPageNotFound
+ * @internal    @disabled 1
  */
 
 require MODX_BASE_PATH.'assets/plugins/__autoload.php';

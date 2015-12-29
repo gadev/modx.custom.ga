@@ -11,6 +11,7 @@
  * @internal    @properties &debug=Debug;list;true,false;true &modxcache=MODX cache;list;true,false;false &conditional=Conditional;list;true,false;true
  * @internal    @events OnWebPageInit,OnManagerPageInit,OnPageNotFound,OnAfterLoadDocumentObject,OnLoadWebDocument,OnCacheUpdate,OnWebPagePrerender
  * @internal    @installset base
+ * @internal    @disabled 1
  */
 
 require MODX_BASE_PATH.'assets/plugins/twig/replaceTemplateTwig.php';
